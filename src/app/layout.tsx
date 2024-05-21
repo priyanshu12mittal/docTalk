@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Recursive } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import Navbar from "@/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const recursive = Recursive({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className=" light">
+      <body className={cn('min-h-screen font-sans antialiased grainy',recursive.className)}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
